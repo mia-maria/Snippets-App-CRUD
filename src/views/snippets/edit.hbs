@@ -1,0 +1,10 @@
+<h1>
+  <span class="far fa-edit"></span> Edit
+</h1>
+<form method="post" action="./snippets/{{viewData.id}}/update">
+  <input type="hidden" name="id" value="{{viewData.id}}" />
+  <div class="form-group">
+    <textarea rows = "5" class="form-control" name="description" required="required" autofocus="autofocus" >{{viewData.description}}</textarea>
+  </div>
+  <button type="submit" class="btn btn-lg btn-primary">Update Snippet</button>
+</form>

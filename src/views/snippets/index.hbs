@@ -1,0 +1,52 @@
+<h1>
+    <span class="far fa-list-alt"></span> Snippets
+</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Snippet</th>
+            <th>Author</th>
+            {{#if session.loggedIn}}
+            <th>Action</th>
+            {{/if}}
+        </tr>
+    </thead>
+    <tbody>
+        {{#if viewData.snippets.length }}
+        {{#if session.loggedIn}}
+        {{#if userData.snippets.length }}
+        {{#each userData.snippets}}
+        <tr>
+            <td class="w-100" style="white-space: pre-wrap;">{{this.description}}</td>
+            <td class="w-100">{{this.author}}</td>
+            <td>
+                <a href="./snippets/{{this.id}}/edit"><span class="far fa-edit"></span></a>
+                <a href="./snippets/{{this.id}}/remove"><span class="far fa-trash-alt"></span></a>
+            </td>
+        </tr>
+        {{/each}}
+        {{/if}}
+        {{#each viewData.snippets}}
+        <tr>
+            <td class="w-100" style="white-space: pre-wrap;">{{this.description}}</td>
+            <td class="w-100">{{this.author}}</td>
+        </tr>
+        {{/each}}
+        {{else}}
+        {{#each viewData.snippets}}
+        <tr>
+            <td class="w-100" style="white-space: pre-wrap;">{{this.description}}</td>
+            <td class="w-100">{{this.author}}</td>
+        </tr>
+        {{/each}}
+        {{/if}}
+        {{else}}
+        <tr>
+            <td colspan="3" class="text-center text-danger">
+                There are no snippets to display.
+            </td>
+        </tr>
+        {{/if}}
+    </tbody>
+</table>
